@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
+using Asp.Versioning;
+using Asp.Versioning.ApiExplorer;
 
 namespace MinimalApi.Extensions;
 
@@ -15,9 +16,7 @@ public static class ApiVersioningExtensions
                 new HeaderApiVersionReader("X-Version"),
                 new UrlSegmentApiVersionReader()
             );
-        });
-
-        services.AddVersionedApiExplorer(setup =>
+        }).AddApiExplorer(setup =>
         {
             setup.GroupNameFormat = "'v'VVV";
             setup.SubstituteApiVersionInUrl = true;
