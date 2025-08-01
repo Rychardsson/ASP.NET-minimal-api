@@ -43,6 +43,9 @@ public class CacheWarmupService : BackgroundService
         // Implementar lógica de pre-cache dos dados mais acessados
         _logger.LogInformation("Executando warmup do cache...");
         
+        // Simula operação assíncrona
+        await Task.Delay(100);
+        
         // Exemplo: pré-carregar estatísticas
         // var estatisticas = await GetEstatisticas(serviceProvider);
         // await cacheService.SetAsync("estatisticas:geral", estatisticas, TimeSpan.FromHours(1));

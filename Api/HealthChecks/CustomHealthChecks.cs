@@ -70,15 +70,15 @@ public class MemoryHealthCheck : IHealthCheck
             // Alerta se usar mais de 500MB
             if (workingSet > 500 * 1024 * 1024)
             {
-                return HealthCheckResult.Degraded("High memory usage detected", null, data);
+                return Task.FromResult(HealthCheckResult.Degraded("High memory usage detected", null, data));
             }
 
-            return HealthCheckResult.Healthy("Memory usage is normal", data);
+            return Task.FromResult(HealthCheckResult.Healthy("Memory usage is normal", data));
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Memory health check failed");
-            return HealthCheckResult.Unhealthy("Memory health check failed", ex);
+            return Task.FromResult(HealthCheckResult.Unhealthy("Memory health check failed", ex));
         }
     }
 }
